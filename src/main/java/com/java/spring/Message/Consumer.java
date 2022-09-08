@@ -20,16 +20,18 @@ public class Consumer {
     private final List<User> users;
 
 
-    @KafkaListener(topics = "elastic1",groupId = "grup1")
+
+
+    @KafkaListener(topics = "input",groupId = "groupInput")
     public void postUser(List<User> user){
         users.addAll(user);
-        System.out.println(users);
+        logger.info(users.toString());
     }
 
 
-    @KafkaListener(topics = "elastic2",groupId = "grup1")
-    public void getUsers(List<User> user){
-        logger.info(user+"");
+    @KafkaListener(topics = "text",groupId = "groupText")
+    public void getUsers(List<String> text){
+        logger.info(text.toString());
     }
 
 

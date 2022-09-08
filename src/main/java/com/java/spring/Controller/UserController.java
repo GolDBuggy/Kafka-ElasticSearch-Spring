@@ -32,4 +32,31 @@ public class UserController {
         service.save(user);
         return  user;
     }
+
+    @PutMapping("/update")
+    @ApiOperation(value = "Update Method",notes = "update user")
+    public void update(@RequestBody @ApiParam(value = "user") User user){
+        service.update(user);
+    }
+
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Get Method",notes = "get user by id")
+    public User getUserById(@PathVariable @ApiParam(value = "id") String id){
+        return service.getById(id);
+    }
+
+    @DeleteMapping("/delete")
+    @ApiOperation(value = "Delete Method",notes = "delete all user")
+    public void deleteAll(){
+        service.deleteAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "Delete Method",notes = "delete user by id")
+    public void deleteById(@PathVariable @ApiParam(value = "id") String id){
+        service.deleteById(id);
+    }
+
+
 }

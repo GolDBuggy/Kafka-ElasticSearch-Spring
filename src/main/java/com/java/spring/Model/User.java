@@ -28,24 +28,27 @@ public class User {
 
     @Id
     @Field(type = FieldType.Text,name = "user_id")
-    @ApiModelProperty(value = "String id alanı")
+    @ApiModelProperty(value = "String id ")
     private String id;
 
     @Field(type = FieldType.Text,name = "username")
-    @ApiModelProperty(value = "isim alanı")
+    @ApiModelProperty(value = "isim")
     private String name;
 
     @Field(type = FieldType.Text,name = "user_address")
-    @ApiModelProperty(value = "adres alanı")
+    @ApiModelProperty(value = "adres")
     private String address;
 
     @Field(type = FieldType.Double_Range,name = "money")
+    @ApiModelProperty(value = "para")
     private BigDecimal money;
 
     @Field(type = FieldType.Date,name = "birthday")
     @JsonFormat(pattern = "dd-MM-yyyy")
+    @ApiModelProperty(value = "dogumgunu")
     private Date birthday;
 
     @Field(type = FieldType.Nested,name = "features")
+    @ApiModelProperty(value = "liste verileri")
     private List features;
 }
