@@ -3,12 +3,12 @@ package com.java.spring.Service;
 import com.java.spring.Model.User;
 import com.java.spring.Repository.UserRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -25,11 +25,11 @@ public class UserService {
 
 
     public Iterable<User> getAll(){
-        Iterable<User> users=  repo.findAll();
+        Pageable pageable= PageRequest.of(0,10, Sort.by("money").descending());
+        Iterable<User> users=  repo.findAll(pageable);
         sendListJsonMessage(users);
         return users;
     }
-
 
     public void update(User user){
         repo.save(user);

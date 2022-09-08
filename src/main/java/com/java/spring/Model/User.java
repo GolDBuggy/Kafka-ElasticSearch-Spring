@@ -51,4 +51,6 @@ public class User {
     @Field(type = FieldType.Nested,name = "features")
     @ApiModelProperty(value = "liste verileri")
     private List features;
+
+
 }
